@@ -51,13 +51,14 @@ const BUTTONS = [
 ];
 
 const Panel = () => {
-	const [text, setText] = useState('');
+	const [text, setText] = useState('hello');
 
 	const keys = BUTTONS.map((btn) => btn.key);
 
 	const handleClick = (e) => {
 		const index = keys.indexOf(e.target.id);
 		play(index);
+		handleText(BUTTONS[index].name);
 	};
 
 	useEffect(() => {
@@ -65,6 +66,7 @@ const Panel = () => {
 			if (keys.includes(e.key.toUpperCase())) {
 				const index = keys.indexOf(e.key.toUpperCase());
 				play(index);
+				handleText(BUTTONS[index].name);
 			}
 		};
 
@@ -73,6 +75,10 @@ const Panel = () => {
 		return () => window.removeEventListener('keydown', keyPressed);
 	}, []);
 
+	const handleText = (soundName) => {
+		setText(soundName);
+	};
+
 	return (
 		<>
 			{BUTTONS.map((btn) => (
@@ -80,9 +86,11 @@ const Panel = () => {
 					clickHandler={handleClick}
 					soundSource={btn.audio}
 					key={btn.key}
+					soundName={btn.name}
 					buttonName={btn.key}
 				/>
 			))}
+			<p>{text}</p>
 		</>
 	);
 };
