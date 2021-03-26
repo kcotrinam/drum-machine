@@ -2,9 +2,11 @@ import Panel from './components/Panel';
 
 const App = () => {
 	return (
-		<>
-			<Panel />
-		</>
+		<div id='drum-machine'>
+			<div id='display'>
+				<Panel />
+			</div>
+		</div>
 	);
 };
 
