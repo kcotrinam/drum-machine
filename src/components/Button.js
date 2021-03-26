@@ -6,11 +6,11 @@ const Button = ({ buttonName, clickHandler, soundSource }) => {
 			<button
 				key={buttonName}
 				className='drum-pad'
-				data-name={buttonName}
+				id={buttonName}
 				onClick={clickHandler}>
 				{buttonName}
+				<Audio source={soundSource} audioId={buttonName} />
 			</button>
-			<Audio source={soundSource} />
 		</>
 	);
 };

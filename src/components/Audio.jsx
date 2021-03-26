@@ -1,7 +1,5 @@
-const Audio = ({ source }) => [
-	<audio key={source}>
-		<source src={source} type='audio/mpeg' />
-	</audio>,
+const Audio = ({ source, audioId }) => [
+	<audio key={source} src={source} id={audioId} className='clip' />,
 ];
 
 export default Audio;
