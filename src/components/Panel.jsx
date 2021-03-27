@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import play from '../shared/playButton';
 import Button from './Button';
+import '../scss/styles.scss';
 
 const Panel = ({ textHandler, buttonsPanel, nameSound, switcher }) => {
 	const keys = buttonsPanel.map((btn) => btn.key);
@@ -27,7 +28,7 @@ const Panel = ({ textHandler, buttonsPanel, nameSound, switcher }) => {
 
 	return (
 		<>
-			<div>
+			<div className='left-wrapper'>
 				{buttonsPanel.map((btn) => (
 					<Button
 						clickHandler={handleClick}
@@ -38,8 +39,17 @@ const Panel = ({ textHandler, buttonsPanel, nameSound, switcher }) => {
 					/>
 				))}
 			</div>
-			<p>{nameSound}</p>
-			<div onClick={switcher}>here</div>
+			<div className='right-wrapper'>
+				<div className='top'>
+					<p className='pad-name'>{nameSound}</p>
+				</div>
+				<div className='bottom'>
+					<h3 className='switcher-title'>Bank</h3>
+					<div className='switcher' onClick={switcher}>
+						<div className='switcher-btn'></div>
+					</div>
+				</div>
+			</div>
 		</>
 	);
 };
