@@ -26,6 +26,18 @@ const Panel = ({ textHandler, buttonsPanel, nameSound, switcher }) => {
 		return () => window.removeEventListener('keydown', keyPressed);
 	}, []);
 
+	useEffect(() => {
+		const addChangeClass = () => {
+			const btn = document.querySelector('.switcher-btn');
+			btn.classList.toggle('change');
+		};
+
+		const switcher = document.querySelector('.switcher');
+		switcher.addEventListener('click', addChangeClass);
+
+		return () => window.removeEventListener('click', addChangeClass);
+	}, []);
+
 	return (
 		<>
 			<div className='left-wrapper'>
